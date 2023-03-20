@@ -12,9 +12,13 @@ class BankAccount {
   }
 
   withdraw(amount) {
-    this.balance -= amount;
-    const transaction = new Transaction(this.getTransactionDate(), amount, 0.00, this.balance);
-    this.transactions.push(transaction);
+    if (amount > this.balance) {
+      return "Withdrawal request denied, you have insufficient funds for the amount requested";
+    } else {
+      this.balance -= amount;
+      const transaction = new Transaction(this.getTransactionDate(), amount, 0.00, this.balance);
+      this.transactions.push(transaction);
+    }
   }
 
   deposit(amount) {

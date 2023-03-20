@@ -37,4 +37,9 @@ describe('BankAccount', () => {
     expect(account.allTransactions()[0].debit).toEqual(0);
     expect(account.allTransactions()[0].balance).toEqual(39.50);
   })
+
+  it('makes an invalid withdrawal which returns declined', () => {
+    const account = new BankAccount(50.00);
+    expect(account.withdraw(70.00)).toEqual("Withdrawal request denied, you have insufficient funds for the amount requested");
+  })
 })

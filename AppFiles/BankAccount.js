@@ -16,14 +16,14 @@ class BankAccount {
       return "Withdrawal request denied, you have insufficient funds for the amount requested";
     } else {
       this.balance -= amount;
-      const transaction = new Transaction(this.getTransactionDate(), amount, 0.00, this.balance);
+      const transaction = new Transaction(this.getTransactionDate(), amount, "", this.balance);
       this.transactions.push(transaction);
     }
   }
 
   deposit(amount) {
     this.balance += amount;
-    const transaction = new Transaction(this.getTransactionDate(), 0.00, amount, this.balance);
+    const transaction = new Transaction(this.getTransactionDate(), "", amount, this.balance);
     this.transactions.push(transaction);
   }
 

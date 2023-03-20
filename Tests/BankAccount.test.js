@@ -22,7 +22,7 @@ describe('BankAccount', () => {
     account.deposit(300.00);
 
     expect(account.allTransactions()[0].date).toBeTruthy;
-    expect(account.allTransactions()[0].credit).toEqual(0);
+    expect(account.allTransactions()[0].credit).toEqual("");
     expect(account.allTransactions()[0].debit).toEqual(300.00);
     expect(account.allTransactions()[0].balance).toEqual(700.00);
   })
@@ -34,12 +34,14 @@ describe('BankAccount', () => {
 
     expect(account.allTransactions()[0].date).toBeTruthy;
     expect(account.allTransactions()[0].credit).toEqual(10.50);
-    expect(account.allTransactions()[0].debit).toEqual(0);
+    expect(account.allTransactions()[0].debit).toEqual("");
     expect(account.allTransactions()[0].balance).toEqual(39.50);
   })
+
 
   it('makes an invalid withdrawal which returns declined', () => {
     const account = new BankAccount(50.00);
     expect(account.withdraw(70.00)).toEqual("Withdrawal request denied, you have insufficient funds for the amount requested");
+    expect(account.allTransactions()).toEqual("No transactions have been made with this account.");
   })
 })

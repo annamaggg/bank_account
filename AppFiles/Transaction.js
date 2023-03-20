@@ -6,20 +6,13 @@ class Transaction {
     this.balance = balance;
   }
 
-  returnDate() {
-
-  }
-
-  returnCredit() {
-    
-  }
-
-  returnDebit() {
-    
-  }
-
-  returnBalance() {
-    
+  returnTransaction() {
+    return ({
+      date: this.date,
+      credit: this.credit,
+      debit: this.debit,
+      balance: this.balance
+    })
   }
 }
 

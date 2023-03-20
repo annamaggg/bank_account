@@ -3,6 +3,7 @@ const BankAccount = require('../AppFiles/BankAccount');
 describe('BankAccount', () => {
   it('creates a bank account and returns no transaction history', () => {
     const account = new BankAccount();
+
     expect(account.latestTransaction()).toEqual("No transactions have been made with this account.")
     expect(account.allTransactions()).toEqual("No transactions have been made with this account.")
   })
@@ -11,8 +12,10 @@ describe('BankAccount', () => {
 
   it('creates a bank account and returns current date', () => { 
     const account = new BankAccount();
-    expect(account.getTransactionDate()).toEqual("20/3/2023")
+
+    expect(account.getTransactionDate()).toEqual("20/3/2023");
   })
+
 
   it('makes a deposit of 300 with starting balance 400 and returns the transaction', () => {
     const account = new BankAccount(400.00);
@@ -22,5 +25,16 @@ describe('BankAccount', () => {
     expect(account.allTransactions()[0].credit).toEqual(0);
     expect(account.allTransactions()[0].debit).toEqual(300.00);
     expect(account.allTransactions()[0].balance).toEqual(700.00);
+  })
+
+
+  it('makes a withdrawal of 10 with starting balance 50 and returns the transaction', () => {
+    const account = new BankAccount(50.00);
+    account.withdraw(10.50);
+
+    expect(account.allTransactions()[0].date).toBeTruthy;
+    expect(account.allTransactions()[0].credit).toEqual(10.50);
+    expect(account.allTransactions()[0].debit).toEqual(0);
+    expect(account.allTransactions()[0].balance).toEqual(39.50);
   })
 })

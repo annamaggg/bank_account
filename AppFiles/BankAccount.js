@@ -1,3 +1,5 @@
+const Transaction = require("./Transaction");
+
 class BankAccount {
   constructor(StartBalance = 0.00){ //check syntax
     this.transactions = [];
@@ -14,8 +16,9 @@ class BankAccount {
   }
 
   deposit(amount) {
-    
-
+    this.balance += amount;
+    const transaction = new Transaction(this.getTransactionDate(), 0.00, amount, this.balance);
+    this.transactions.push(transaction);
   }
 
   latestTransaction() {
@@ -27,6 +30,8 @@ class BankAccount {
   allTransactions() {
     if (this.transactions.length === 0) {
       return "No transactions have been made with this account.";
+    } else {
+      return this.transactions;
     }
   }
 }

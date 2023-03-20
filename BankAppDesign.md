@@ -9,8 +9,10 @@ BankAccount.printStatement;
 ### Things to consider
 
 user input:
-  float for deposit, withdrawal and balance => if an integer, convert to float
-  if empty string, nil or 0 is entered for no withdrawal/balace, convert to float
+  - float for deposit, withdrawal and balance => if an integer, convert to float
+  - if empty string, nil or 0 is entered for no withdrawal/balace, convert to float
+  - ensure float to two decimal places is entered as the limit
+  - if withdrawal amount exceeds amount available in balance, deny the request
 
 ### Notes
 

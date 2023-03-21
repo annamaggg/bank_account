@@ -1,4 +1,4 @@
-class Transaction {
+class LogTransaction {
   constructor(credit, debit, balance) {
     this.credit = credit;
     this.debit = debit;
@@ -25,4 +25,4 @@ class Transaction {
   }
 }
 
-module.exports = Transaction;
+module.exports = LogTransaction;

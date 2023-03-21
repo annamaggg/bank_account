@@ -1,4 +1,4 @@
-const Transaction = require("./Transaction");
+const LogTransaction = require("./LogTransaction");
 
 class BankAccount {
   constructor(StartBalance = 0.00) { 
@@ -11,14 +11,14 @@ class BankAccount {
       return "Withdrawal request denied, you have insufficient funds for the amount requested";
     } else {
       this.balance -= amount;
-      const transaction = new Transaction(amount, 0, this.balance);
+      const transaction = new LogTransaction(amount, 0, this.balance);
       this.transactions.push(transaction);
     }
   }
 
   deposit(amount) {
     this.balance += amount;
-    const transaction = new Transaction(0, amount, this.balance);
+    const transaction = new LogTransaction(0, amount, this.balance);
     this.transactions.push(transaction);
   }
 

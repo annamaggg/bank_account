@@ -28,4 +28,23 @@ describe('FormatTransaction', () => {
 
     expect(formatTransaction.format()).toEqual("date || credit || debit || balance\n21/3/2023 ||  || 200.00 || 200.00")
   })
+
+  it('returns multiple transactions correctly formatted', () => {
+    const transactions = [{
+      date: '21/3/2023',
+      credit: 0,
+      debit: 200.00,
+      balance: 200.00
+    },
+    {
+      date: '22/4/2023',
+      credit: 30,
+      debit: 0,
+      balance: 170.00
+    }]
+
+    const formatTransaction = new FormatTransaction(transactions);
+
+    expect(formatTransaction.format()).toEqual("date || credit || debit || balance\n21/3/2023 ||  || 200.00 || 200.00\n22/4/2023 || 30.00 ||  || 170.00")
+  })
 })

@@ -1,14 +1,9 @@
 const Transaction = require("./Transaction");
 
 class BankAccount {
-  constructor(StartBalance = 0.00){ //check syntax
+  constructor(StartBalance = 0.00) { 
     this.transactions = [];
     this.balance = StartBalance;
-  }
-
-  getTransactionDate() {
-    let date = new Date();
-    return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
   }
 
   withdraw(amount) {
@@ -16,14 +11,14 @@ class BankAccount {
       return "Withdrawal request denied, you have insufficient funds for the amount requested";
     } else {
       this.balance -= amount;
-      const transaction = new Transaction(this.getTransactionDate(), amount, "", this.balance);
+      const transaction = new Transaction(amount, "", this.balance);
       this.transactions.push(transaction);
     }
   }
 
   deposit(amount) {
     this.balance += amount;
-    const transaction = new Transaction(this.getTransactionDate(), "", amount, this.balance);
+    const transaction = new Transaction("", amount, this.balance);
     this.transactions.push(transaction);
   }
 

@@ -6,6 +6,11 @@ describe('FormatTransaction', () => {
     expect(formatTransaction.stringifyNumber(0)).toEqual("");
   })
 
+  it('converts an integer to a float with .00 as a string', () => {
+    const formatTransaction = new FormatTransaction([]);
+    expect(formatTransaction.stringifyNumber(20)).toEqual("20.00");
+  })
+
   it('returns a single formatted transaction', () => {
     const transaction = [{
       date: '21/3/2023',

@@ -1,6 +1,11 @@
 const FormatTransaction = require('../AppFiles/FormatTransaction');
 
 describe('FormatTransaction', () => {
+  it('converts a number of zero to an empty string', () => {
+    const formatTransaction = new FormatTransaction([]);
+    expect(formatTransaction.stringifyNumber(0)).toEqual("");
+  })
+
   it('returns a single formatted transaction', () => {
     const transaction = [{
       date: '21/3/2023',

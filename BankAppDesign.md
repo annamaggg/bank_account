@@ -14,8 +14,6 @@ BankAccount.printStatement;
 
 ### Notes
 
-debits (dr) record all of the money flowing into an account, while credits (cr) record all of the money flowing out of an account
-
-debit = deposit
-credit = withdrawal
+debit = withdrawal 
+credit = deposit
 

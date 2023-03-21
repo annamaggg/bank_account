@@ -11,6 +11,11 @@ describe('FormatTransaction', () => {
     expect(formatTransaction.stringifyNumber(20)).toEqual("20.00");
   })
 
+  it('converts a float to a string with two decimal places', () => {
+    const formatTransaction = new FormatTransaction([]);
+    expect(formatTransaction.stringifyNumber(20.003)).toEqual("20.00");
+  })
+
   it('returns a single formatted transaction', () => {
     const transaction = [{
       date: '21/3/2023',

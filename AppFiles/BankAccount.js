@@ -1,4 +1,5 @@
 const LogTransaction = require("./LogTransaction");
+const FormatTransactions = require("./FormatTransaction");
 
 class BankAccount {
   constructor(StartBalance = 0.00) { 
@@ -18,7 +19,7 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount;
-    const transaction = new LogTransaction(0, amount, this.balance);
+    const transaction = new LogTransaction(0, amount, this.balance).returnTransaction();
     this.transactions.push(transaction);
   }
 
@@ -32,7 +33,8 @@ class BankAccount {
     if (this.transactions.length === 0) {
       return "No transactions have been made with this account.";
     } else {
-      return this.transactions;
+      const output = new FormatTransactions(this.transactions).format();
+      return output;
     }
   }
 }

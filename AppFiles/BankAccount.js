@@ -21,17 +21,12 @@ class BankAccount {
     this.transactions.push(new LogTransaction(0, amount, this.balance).returnTransaction());
   }
 
-  latestTransaction() {
-    if (this.transactions.length === 0) {
-      return "No transactions have been made with this account.";
-    }
-  }
-
   allTransactions() {
     if (this.transactions.length === 0) {
       return "No transactions have been made with this account.";
     } else {
-      return new FormatTransactions(this.transactions).format();
+      const output = new FormatTransactions(this.transactions).format();
+      console.log(output);
     }
   }
 }

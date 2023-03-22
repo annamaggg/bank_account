@@ -6,9 +6,12 @@ describe('BankAccount', () => {
     const account = new BankAccount(400.00);
     account.deposit(300.00);
 
-    expect(account.allTransactions()).toBeTruthy;
-    expect(account.allTransactions()).toMatch(/date || credit || debit || balance/);
-    expect(account.allTransactions()).toMatch(/21\/03\/2023 ||  || 300.00 || 700.00/);
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    account.allTransactions();
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('date || credit || debit || balance'));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('||  || 300.00 || 700.00'));
+    consoleSpy.mockRestore();
   })
 
 
@@ -17,9 +20,13 @@ describe('BankAccount', () => {
     account.withdraw(10.00);
     account.deposit(25.00);
 
-    expect(account.allTransactions()).toMatch(/date || credit || debit || balance/);
-    expect(account.allTransactions()).toMatch(/21\/03\/2023 || 10.00 ||  || 40.00/);
-    expect(account.allTransactions()).toMatch(/21\/03\/2023 ||  || 25.00 || 65.00/);
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    account.allTransactions();
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('date || credit || debit || balance'));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('|| 10.00 ||  || 40.00'));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('||  || 25.00 || 65.00'));
+    consoleSpy.mockRestore();
   })
 
 

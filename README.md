@@ -15,7 +15,8 @@ The user is able to input deposit amounts, or withdrawal amounts into a bank sys
 //Why you used the technologies you used//
 
 This project is written in JavaScript and can be run with Node.js. The progress is tracked with Git and the repository can be found through this link: 
-    //git link//
+
+    https://github.com/annamaggg/bank_account
 
 //Some of the challenges you faced and features you hope to implement in the future//
 

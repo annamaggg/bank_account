@@ -4,7 +4,6 @@ describe('BankAccount', () => {
   it('creates a bank account and returns no transaction history', () => {
     const account = new BankAccount();
 
-    expect(account.latestTransaction()).toEqual("No transactions have been made with this account.")
     expect(account.allTransactions()).toEqual("No transactions have been made with this account.")
   })
 

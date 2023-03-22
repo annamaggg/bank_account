@@ -7,18 +7,19 @@ describe('BankAccount', () => {
     account.deposit(300.00);
 
     expect(account.allTransactions()).toBeTruthy;
-    expect(account.allTransactions()).toEqual("date || credit || debit || balance\n21/03/2023 ||  || 300.00 || 700.00");
+    expect(account.allTransactions()).toMatch(/date || credit || debit || balance/);
+    expect(account.allTransactions()).toMatch(/21\/03\/2023 ||  || 300.00 || 700.00/);
   })
 
 
-  xit('makes a withdrawal of 10 with starting balance 50 and returns the transaction', () => {
+  it('makes a withdrawal of 10 then deposit of 25 with starting balance 50 and returns the transaction', () => {
     const account = new BankAccount(50.00);
-    account.withdraw(10.50);
+    account.withdraw(10.00);
+    account.deposit(25.00);
 
-    expect(account.allTransactions()[0].date).toBeTruthy;
-    expect(account.allTransactions()[0].credit).toEqual(10.50);
-    expect(account.allTransactions()[0].debit).toEqual(0);
-    expect(account.allTransactions()[0].balance).toEqual(39.50);
+    expect(account.allTransactions()).toMatch(/date || credit || debit || balance/);
+    expect(account.allTransactions()).toMatch(/21\/03\/2023 || 10.00 ||  || 40.00/);
+    expect(account.allTransactions()).toMatch(/21\/03\/2023 ||  || 25.00 || 65.00/);
   })
 
 

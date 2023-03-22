@@ -12,7 +12,7 @@ class BankAccount {
       return "Withdrawal request denied, you have insufficient funds for the amount requested";
     } else {
       this.balance -= amount;
-      this.transactions.push(new LogTransaction(amount, 0, this.balance));
+      this.transactions.push(new LogTransaction(amount, 0, this.balance).returnTransaction());
     }
   }
 

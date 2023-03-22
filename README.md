@@ -2,9 +2,7 @@
 
 ## Description
 
-//What your application does//
-
-The user is able to input deposit amounts, or withdrawal amounts into a bank system. A statement is returned including the date of the transaction, amount of withdrawal or deposit and the resulting balance. An example of an output is shown below:
+The user is able to input deposit amounts, or withdrawal amounts into a bank system. A statement is returned including the date of each transaction, amount of withdrawal or deposit and the resulting balance. An example of an output is shown below:
 
     date || credit || debit || balance
     14/01/2023 || || 500.00 || 2500.00
@@ -12,13 +10,10 @@ The user is able to input deposit amounts, or withdrawal amounts into a bank sys
     10/01/2023 || 1000.00 || || 1000.00
 
 
-//Why you used the technologies you used//
-
 This project is written in JavaScript and can be run with Node.js. The progress is tracked with Git and the repository can be found through this link: 
 
     https://github.com/annamaggg/bank_account
 
-//Some of the challenges you faced and features you hope to implement in the future//
 
 
 ## How to Install and Run the Project
@@ -38,12 +33,33 @@ Install Node using nvm:
     $ nvm install node
     $ nvm use node
 
-Run the file: (Make sure you are in the same directory which contains the app.js file)
+Run the file in node: (Make sure you are in the same directory which contains the project files)
 
-    $ node BankApp.js
+    $ node
 
 
 ## How to Use the Project
 
-When the application is running, 
+Some examples of how to interact with the application are shown below (while node is running and in the bank_account directory).
+
+    $ const BankAccount = require('./AppFiles/BankAccount');
+
+    $ const myAccount = new BankAccount(50.00); 
+    // The number passed is the start balance, with a default value of 0.
+
+    $ myAccount.withdraw(20.00);
+
+    $ myAccount.deposit(60.00);
+
+    $ myAccount.deposit(10.00);
+
+    $ myAccount.allTransactions();
+
+        date || credit || debit || balance
+        22/03/2023 || 20.00 ||  || 30.00
+        22/03/2023 ||  || 60.00 || 90.00
+        22/03/2023 ||  || 10.00 || 100.00
+
+
+
 

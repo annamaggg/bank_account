@@ -12,15 +12,13 @@ class BankAccount {
       return "Withdrawal request denied, you have insufficient funds for the amount requested";
     } else {
       this.balance -= amount;
-      const transaction = new LogTransaction(amount, 0, this.balance);
-      this.transactions.push(transaction);
+      this.transactions.push(new LogTransaction(amount, 0, this.balance));
     }
   }
 
   deposit(amount) {
     this.balance += amount;
-    const transaction = new LogTransaction(0, amount, this.balance).returnTransaction();
-    this.transactions.push(transaction);
+    this.transactions.push(new LogTransaction(0, amount, this.balance).returnTransaction());
   }
 
   latestTransaction() {
@@ -33,8 +31,7 @@ class BankAccount {
     if (this.transactions.length === 0) {
       return "No transactions have been made with this account.";
     } else {
-      const output = new FormatTransactions(this.transactions).format();
-      return output;
+      return new FormatTransactions(this.transactions).format();
     }
   }
 }
